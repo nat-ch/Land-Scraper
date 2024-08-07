@@ -2,17 +2,20 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
 import time
+# Create a list to store the scraped data
+data = []
+
+# Get user input for state and number of pages
+s = input("Enter the state (e.g., Louisiana): ")
+p = int(input("Enter the number of pages to scrape: "))
 
 # Initialize the web driver
 driver = webdriver.Chrome()
 
-# Create a list to store the scraped data
-data = []
-
 # Iterate through the first 3 pages
-for i in range(1, 4):
+for i in range(1,p):
     if i == 1:
-        driver.get("https://www.land.com/Louisiana/all-land/")
+        driver.get(f"https://www.land.com/{s}/all-land/")
     else:
         driver.get(f"https://www.land.com/Louisiana/all-land/page-{i}/")
     
@@ -42,6 +45,4 @@ df = pd.DataFrame(data)
 print(df)
 
 # Save the DataFrame to a CSV file
-#df.to_csv('land_listings.csv', index=False)
-#new
-#new2
+df.to_csv(f'{s} land_listings.csv', index=False)
