@@ -8,6 +8,7 @@ data = []
 # Get user input for state and number of pages
 s = input("Enter the state (e.g., Louisiana): ")
 p = int(input("Enter the number of pages to scrape: "))
+p = p+1
 
 # Initialize the web driver
 driver = webdriver.Chrome()
@@ -45,4 +46,4 @@ df = pd.DataFrame(data)
 print(df)
 
 # Save the DataFrame to a CSV file
-df.to_csv(f'{s} land_listings.csv', index=False)
+#df.to_csv(f'{s} land_listings.csv', index=False)
